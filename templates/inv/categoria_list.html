@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>Listado de Categoría</h1>
+<div>
+    <a class="btn btn-primary btn-circle" href="{% url 'inv:categoria_new' %}"
+    role="button"><i class="fa fa-plus-square"></i>Nueva</a>
+</div>
+{% comment %} {% url 'inv:categoria_new'%}  {% endcomment %}
+{% if not obj%}
+<div class="alert alert-info">No hay categorías</div>
+{% else %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Descripción</td>
+            <td>Estado</td>
+            <td>F. Creado</td>
+            <td>F. Modif</td>
+            <td class="all">Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in obj %}
+        <tr>
+            <td>{{ item.id}}</td>
+            <td>{{ item.descripcion}}</td>
+            <td>{{ item.estado|yesno:"Activo, Inactivo"}}</td>
+            <td>{{ item.fc|date:"d/m/Y H:i:s"}}</td>
+            <td>{{ item.fm|date:"d/m/Y H:i:s"}}</td>
+            <td>
+                <a class="btn btn-warning btn-circle" href="{% url 'inv:categoria_edit' item.id %}"
+                role="button"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-circle" href="{% url 'inv:categoria_del' item.id %}"
+                role="button"><i class="fa fa-trash-alt"></i></a>
+            </td>
+           
+        {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
+{% block js_page%}
+    <script>
+        //Llamar al plugin del datatables
+        $(document).ready(function(){
+            $(`.table`).DataTable();
+        });
+    </script>    
+{% endblock %}
