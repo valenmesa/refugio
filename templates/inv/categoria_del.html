@@ -9,7 +9,7 @@
    
     <button class="btn btn-danger" type="submit" class="btn btn-primary";>
         Si, eliminar </button>
-    <a class="btn btn-success" href="{% url 'inv:categoria_list' %}">
+    <a class="btn btn-success" href="{{ request.META.HTTP_REFERER }}">
         <span class="fa fa-undo"></span>Cancelar</a>
 </form>
 
