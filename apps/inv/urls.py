@@ -1,7 +1,11 @@
 from django.urls import include, path
 from .views import CategoriaView, CategoriaNew, CategoriaEdit, CategoriaDel,\
     SubCategoriaView,SubCategoriaNew,SubCategoriaEdit,SubCategoriaDel,\
-    MarcaView, MarcaNew, MarcaEdit, MarcaDel
+    MarcaView, MarcaNew, MarcaEdit, marca_inactivar,\
+    UnidadMedidaView, UnidadMedidaNew, UnidadMedidaEdit, unidadmedida_inactivar,\
+    ProductoView, ProductoNew
+    # ProductoEdit, producto_inactivar
+    #MarcaDel
 
 
 urlpatterns = [
@@ -17,5 +21,14 @@ urlpatterns = [
     path(r'marca/', MarcaView.as_view(), name='marca_list'),
     path(r'marca/new', MarcaNew.as_view(), name='marca_new'),
     path(r'marca/edit/<int:pk>', MarcaEdit.as_view(), name='marca_edit'),
-    path(r'marca/delete/<int:pk>', MarcaDel.as_view(), name='marca_del'),
+    path(r'marca/inactivar/<int:id>', marca_inactivar, name='marca_inactivar'),
+    path(r'unidadmedida/', UnidadMedidaView.as_view(), name='unidadmedida_list'),
+    path(r'unidadmedida/new', UnidadMedidaNew.as_view(), name='unidadmedida_new'),
+    path(r'unidadmedida/edit/<int:pk>', UnidadMedidaEdit.as_view(), name='unidadmedida_edit'),
+    path(r'unidadmedida/inactivar/<int:id>', unidadmedida_inactivar, name='unidadmedida_inactivar'),
+    path(r'producto/', ProductoView.as_view(), name='producto_list'),
+    path(r'producto/new', ProductoNew.as_view(), name='producto_new'),
+    # path(r'producto/edit/<int:pk>', ProductoEdit.as_view(), name='producto_edit'),
+    # path(r'producto/inactivar/<int:id>', producto_inactivar, name='producto_inactivar'),
+    # path(r'marca/delete/<int:pk>', MarcaDel.as_view(), name='marca_del'),
 ]
