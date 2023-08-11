@@ -8469,6 +8469,10 @@ License: For each use you must have a valid license purchased only from above li
 		</div>
 		<!--end::Modal - Upgrade plan-->
 		<!--begin::Modal - Create App-->
+		{% comment %} pepita {% endcomment %}
+		<div class="modal" id="popup" >
+
+		</div>
 		<div class="modal fade" id="kt_modal_create_app" tabindex="-1" aria-hidden="true">
 			<!--begin::Modal dialog-->
 			<div class="modal-dialog modal-dialog-centered mw-900px">
@@ -10573,6 +10577,26 @@ License: For each use you must have a valid license purchased only from above li
 		{% block js_page%}{% endblock %}
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
+		{% block control_modal%}
+		<script>
+			function abrir_modal(url)
+			{
+				$("#popup").load(url, function(){
+					$(this).modal({
+						backdrop: 'static',
+						keyboard: false
+					})
+					$(this).modal("show");
+				});
+				return false;
+			}
+			function cerrar_modal(url)
+			{
+				$("#popup").modal('hide');
+				return false;
+			};
+		</script>
+		{% endblock %}
 	</body>
 	<!--end::Body-->
 

@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Listado de Productos</h1>
 <div>
-    <a class="btn btn-primary btn-circle" href="{% url 'inv:producto_new' %}"
+    <a class="btn btn-primary btn-circle" onclick="return abrir_modal('{% url 'inv:producto_new' %}')" href="#"
     role="button"><i class="fa fa-plus-square"></i>Nueva</a>
 </div>
 {% comment %} {% url 'inv:categoria_new'%}  {% endcomment %}
@@ -37,10 +37,10 @@
             <td>{{ item.unidadmedida}}</td>
             <td>{{ item.estado|yesno:"Activo, Inactivo"}}</td>
             <td>
-                <a class="btn btn-warning btn-circle" href="{% url 'inv:categoria_edit' item.id %}"
-                role="button"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-danger btn-circle" href="{% url 'inv:categoria_inactivar' item.id %}"
-                role="button"><i class="fa fa-toggle-off"></i></a>
+                {% comment %} <a class="btn btn-warning btn-circle" href="{% url 'inv:categoria_edit' item.id %}"
+                role="button"><i class="fa fa-edit"></i></a> {% endcomment %}
+                {% comment %} <a class="btn btn-danger btn-circle" href="{% url 'inv:categoria_inactivar' item.id %}"
+                role="button"><i class="fa fa-toggle-off"></i></a> {% endcomment %}
             </td>
            
         {% endfor %}
@@ -295,7 +295,7 @@
                         "removeTitle": "Remover Estado",
                         "renameTitle": "Cambiar Nombre Estado"
                     }
-                } 
+                }
             });
         });
     </script>

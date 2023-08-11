@@ -106,22 +106,30 @@ class ProductoForm(forms.ModelForm):
             'codigo',
             'codigo_barra',
             'descripcion',
+            'estado',
             'precio',
             'existencia',
             'ultima_compra',
             'marca',
-            'unidadmedida',
             'subcategoria',
+            'unidadmedida'
         ]
-        exclude=[
+        labels={
+            'codigo':'Código',
+            'estado':'Estado'
+            }
+        exclude =[
             'um',
-            'uc',
             'fm',
+            'uc',
             'fc',
         ]
         widgets={
             'descripcion': forms.TextInput,
-            'estado': forms.CheckboxSelectMultiple,
+            # 'estado' : forms.CheckboxSelectMultiple, 
+      
+           
+
         }
     def __init__(self, *args, **Kwargs):
         super().__init__(*args, **Kwargs)
@@ -129,6 +137,9 @@ class ProductoForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({
                 'class':'form-control'
             })
+           
             
-            self.fields['ultima_compra'].widget.attrs['readonly']=True
-            self.fields['existencia'].widget.attrs['readonly']=True
+
+        self.fields['ultima_compra'].widget.attrs['readonly']=True
+        self.fields['existencia'].widget.attrs['readonly']=True
+        self.fields['estado'] = forms.BooleanField()
