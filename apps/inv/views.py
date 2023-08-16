@@ -198,17 +198,17 @@ class ProductoNew(LoginRequiredMixin, generic.CreateView):
         form.instance.uc=self.request.user
         return super().form_valid(form)
 
-# class ProductoEdit(LoginRequiredMixin, generic.UpdateView):
-#     model=Producto
-#     template_name="inv/producto_form.html"
-#     context_object_name="obj"
-#     form_class=ProductoForm
-#     success_url=reverse_lazy('inv:producto_list')
-#     login_url="login"
+class ProductoEdit(LoginRequiredMixin, generic.UpdateView):
+    model=Producto
+    template_name="inv/producto_form.html"
+    context_object_name="obj"
+    form_class=ProductoForm
+    success_url=reverse_lazy('inv:producto_list')
+    login_url="login"
     
-#     def form_valid(self, form):
-#         form.instance.um=self.request.user.id
-#         return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.um=self.request.user.id
+        return super().form_valid(form)
 
 # def producto_inactivar(request,id):
 #     producto=Producto.objects.filter(pk=id).first()

@@ -37,7 +37,9 @@
             <td>{{ item.unidadmedida}}</td>
             <td>{{ item.estado|yesno:"Activo, Inactivo"}}</td>
             <td>
-                {% comment %} <a class="btn btn-warning btn-circle" href="{% url 'inv:categoria_edit' item.id %}"
+                <a class="btn btn-warning btn-circle" onclick="return abrir_modal('{% url 'inv:producto_edit' item.id %}')" href="#"
+                role="button"><i class="fa fa-edit"></i></a>
+                {% comment %} <a class="btn btn-warning btn-circle" href="{% url 'inv:producto_edit' item.id %}"
                 role="button"><i class="fa fa-edit"></i></a> {% endcomment %}
                 {% comment %} <a class="btn btn-danger btn-circle" href="{% url 'inv:categoria_inactivar' item.id %}"
                 role="button"><i class="fa fa-toggle-off"></i></a> {% endcomment %}
