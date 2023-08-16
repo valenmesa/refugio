@@ -210,19 +210,19 @@ class ProductoEdit(LoginRequiredMixin, generic.UpdateView):
         form.instance.um=self.request.user.id
         return super().form_valid(form)
 
-# def producto_inactivar(request,id):
-#     producto=Producto.objects.filter(pk=id).first()
-#     contexto={}
-#     template_name="inv/estado_inactivar.html"
-#     if not producto:
-#         return redirect("inv:producto_list")
+def producto_inactivar(request,id):
+    producto=Producto.objects.filter(pk=id).first()
+    contexto={}
+    template_name="inv/estado_inactivar.html"
+    if not producto:
+        return redirect("inv:producto_list")
 
-#     if request.method=='GET':
-#         context={'obj':producto}
+    if request.method=='GET':
+        context={'obj':producto}
 
-#     if request.method=='POST':
-#         producto.estado=False
-#         producto.save()
-#         return redirect("inv:producto_list")
+    if request.method=='POST':
+        producto.estado=False
+        producto.save()
+        return redirect("inv:producto_list")
 
-#     return render(request, template_name, contexto)
+    return render(request, template_name, contexto)

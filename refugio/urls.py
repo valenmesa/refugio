@@ -15,4 +15,5 @@ urlpatterns = [
     re_path(r'^accounts/login/', LoginView.as_view(template_name="usuario/index.html"), name="login"),
     re_path(r'^logout/', logout_then_login, name="logout"),
     path('inv/',include(('apps.inv.urls', 'inv'), namespace="inv")),
+    path('cmp/',include(('apps.cmp.urls', 'cmp'), namespace="cmp")),
 ]

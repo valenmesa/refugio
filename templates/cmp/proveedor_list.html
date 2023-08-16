@@ -2,25 +2,24 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>Listado de Productos</h1>
+<h1>Listado de Proveedores</h1>
 <div>
-    <a class="btn btn-primary btn-circle" onclick="return abrir_modal('{% url 'inv:producto_new' %}')" href="#"
+    <a class="btn btn-primary btn-circle" onclick="return abrir_modal('{% url 'cmp:proveedor_new' %}')" href="#"
     role="button"><i class="fa fa-plus-square"></i>Nueva</a>
 </div>
-{% comment %} {% url 'inv:categoria_new'%}  {% endcomment %}
+
 {% if not obj%}
-<div class="alert alert-info">No hay Productos</div>
+<div class="alert alert-info">No hay Proveedores</div>
 {% else %}
 <table class="table table-striped">
     <thead>
         <tr>
-            <td>Subcategoria</td>
-            <td>Código</td>
-            <td>Código de barras</td>
+            <td>Id</td>
             <td>Descripción</td>
-            <td>Existencia</td>
-            <td>Marca</td>
-            <td>U.M</td>
+            <td>Dirección</td>
+            <td>Contacto</td>
+            <td>Teléfono</td>
+            <td>Email</td>
             <td>Estado</td>
             <td class="all">Acciones</td>
         </tr>
@@ -28,22 +27,17 @@
     <tbody>
         {% for item in obj %}
         <tr>
-            <td>{{ item.subcategoria}}</td>
-            <td>{{ item.codigo}}</td>
-            <td>{{ item.codigo_barra}}</td>
+            <td>{{ item.id}}</td>
             <td>{{ item.descripcion}}</td>
-            <td>{{ item.existencia}}</td>
-            <td>{{ item.marca}}</td>
-            <td>{{ item.unidadmedida}}</td>
+            <td>{{ item.direccion}}</td>
+            <td>{{ item.contacto}}</td>
+            <td>{{ item.telefono}}</td>
+            <td>{{ item.email}}</td>
             <td>{{ item.estado|yesno:"Activo, Inactivo"}}</td>
             <td>
-                <a class="btn btn-warning btn-circle" onclick="return abrir_modal('{% url 'inv:producto_edit' item.id %}')" href="#"
+                <a class="btn btn-warning btn-circle" onclick="return abrir_modal('{% url 'cmp:proveedor_edit' item.id %}')" href="#"
                 role="button"><i class="fa fa-edit"></i></a>
-                {% comment %} <a class="btn btn-warning btn-circle" href="{% url 'inv:producto_edit' item.id %}"
-                role="button"><i class="fa fa-edit"></i></a> {% endcomment %}
-                <a class="btn btn-danger btn-circle" href="{% url 'inv:producto_inactivar' item.id %}"
-                role="button"><i class="fa fa-toggle-off"></i></a>
-                {% comment %} <a class="btn btn-danger btn-circle" href="{% url 'inv:categoria_inactivar' item.id %}"
+                {% comment %} <a class="btn btn-danger btn-circle" href="{% url 'inv:producto_inactivar' item.id %}"
                 role="button"><i class="fa fa-toggle-off"></i></a> {% endcomment %}
             </td>
            

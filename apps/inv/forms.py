@@ -126,19 +126,15 @@ class ProductoForm(forms.ModelForm):
         ]
         widgets={
             'descripcion': forms.TextInput,
-            # 'estado' : forms.CheckboxSelectMultiple, 
-      
-           
-
+            # 'estado' : forms.CheckboxSelectMultiple,
         }
+
     def __init__(self, *args, **Kwargs):
         super().__init__(*args, **Kwargs)
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
                 'class':'form-control'
             })
-           
-            
 
         self.fields['ultima_compra'].widget.attrs['readonly']=True
         self.fields['existencia'].widget.attrs['readonly']=True
