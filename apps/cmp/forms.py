@@ -11,6 +11,7 @@ class ProveedorForm(forms.ModelForm):
             "contacto",
             "telefono",
             "email",
+            'estado',
         ]
         labels={
             "descripcion":'Descripción',

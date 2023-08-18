@@ -37,8 +37,8 @@
             <td>
                 <a class="btn btn-warning btn-circle" onclick="return abrir_modal('{% url 'cmp:proveedor_edit' item.id %}')" href="#"
                 role="button"><i class="fa fa-edit"></i></a>
-                {% comment %} <a class="btn btn-danger btn-circle" href="{% url 'inv:producto_inactivar' item.id %}"
-                role="button"><i class="fa fa-toggle-off"></i></a> {% endcomment %}
+                <a class="btn btn-danger btn-circle" onclick="return abrir_modal('{% url 'cmp:proveedor_inactivar' item.id %}')" href="#"
+                role="button"><i class="fa fa-toggle-off"></i></a>
             </td>
            
         {% endfor %}
